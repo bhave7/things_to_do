@@ -1,0 +1,46 @@
+
+<div class="appHome">
+<table class="appHomeTable">
+    <tr>
+        <td class="listView">
+            <list-view  [refreshList] = "this.refreshList"
+                        (listSelectionEvent)="this.listSelectionEventObserver($event)"
+                        (addEditListEvent)="this.addEditListEventObserver($event)">
+
+            </list-view>
+        </td>
+        <td class="taskOfListView">
+            <task-view *ngIf="this.selectedList!==null" 
+            [listModel]=this.selectedList
+            [refreshTasks] = "this.refreshTask"
+            (taskSelectionEvent)="this.taskSelectionEventObserver($event)"
+            (addEditTaskEvent)="this.addEditTaskEventObserver($event)">
+            
+        </task-view>
+        </td>
+
+
+        <td class="actionBar">
+            <div *ngIf="taskAddEdit || listAddEdit" class="actionBarComponents">
+
+                <task-add-edit *ngIf="taskAddEdit"
+                    (taskAdded)="this.taskAddedEditedEventObserver($event)"
+                    (cancelAction)="closeActionPane($event)"
+                    [taskModel] = "this.taskModelForEdit"
+                    [listModel]="this.selectedList">
+                </task-add-edit>
+    
+    
+                
+                <list-add-edit *ngIf="listAddEdit" 
+                (listAdded)="this.listAddedEditedEventObserver($event)"
+                (cancelAction)="closeActionPane($event)"
+                [listModel] = "this.listModelForEdit">
+                    
+                </list-add-edit>
+            </div>
+            
+        </td>
+    </tr>
+</table>
+</div>

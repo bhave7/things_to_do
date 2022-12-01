@@ -1,0 +1,16 @@
+<span class="heading">
+    {{this.listName}}
+</span>
+
+<p *ngIf="this.editMode">
+    Old Value: {{this.listModel.getListName()}}
+</p>
+
+<p *ngIf="!this.editMode">
+    Enter List Name
+</p>
+<input type="text" class="heading" [(ngModel)]="this.listName"
+/>
+<br>
+<button class="button" (click)="this.cancelActionButton();">Cancel</button>
+<button class="action-button" (click)="this.addEditSubmitButton();">Submit</button>

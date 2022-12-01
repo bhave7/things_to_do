@@ -1,0 +1,28 @@
+<!-- <span class="heading">
+    {{this.Name}}
+</span>
+
+<p *ngIf="this.editMode">
+    Old Value: {{this.listModel.getListName()}}
+</p>
+
+<p *ngIf="!this.editMode">
+    Enter List Name
+</p> -->
+<span clas="heding">Task is Under List '{{this.listModel.ListName}}'</span>
+
+<p>Title: <input type="text" class="heading" [(ngModel)]="this.newValueTaskModel.Title"/>
+{{this.taskModel.Title}}
+</p>
+
+<p>Due date: <input type="date" class="heading" [(ngModel)]="this.newValueTaskModel.DueDate"/>
+{{this.taskModel.DueDate}}
+</p>
+
+<p>Note: <input type="text" class="heading" [(ngModel)]="this.newValueTaskModel.Note"/>
+    {{this.taskModel.Note}}
+</p>
+
+<br>
+<button class="button" (click)="this.cancelActionButton();">Cancel</button>
+<button class="action-button" (click)="this.addEditSubmitButton();">Submit</button>

@@ -1,0 +1,26 @@
+<button class="action-button" (click)="this.addEditList()">(+) Add List</button>
+
+<div *ngIf="this.allList">
+    <div class="list-block" *ngFor="let alist of this.allList; index as iNumber" (click)="this.listSelected(alist);">
+
+        <div>
+            <span class="icon">.</span>
+            <span class="heading">{{alist.ListName}}</span>
+            <span class="subheading">{{alist.LastUpdate}}</span>
+        </div>
+
+        <div style="float: right">
+            <button class="button" (click)="this.addEditList(alist)">(~) Edit</button>
+            
+            <button class="button" (click)="this.deleteList(alist.Id)">(-) Delete</button>
+        </div>
+        
+
+    </div>
+
+</div>
+
+<div *ngIf="!this.allList">
+    <p *ngIf="this.isLoaded">List Value NOT exist</p>
+    <p *ngIf="!this.isLoaded">Loading...</p>
+</div>

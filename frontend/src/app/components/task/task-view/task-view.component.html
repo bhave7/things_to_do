@@ -1,0 +1,30 @@
+<button class="action-button" (click)="this.addEditTask()">(+) Add List</button>
+<br>
+
+<div *ngIf="this.allTasks">
+
+    <div class="task-block" *ngFor="let aTask of this.allTasks; index as iNumber">
+        <div>
+            <span class="icon">></span>
+            <span class="heading">{{aTask.Title}}</span>
+            <span class="subheading">Due: {{aTask.DueDate}}</span>
+            <span class="subheading">{{aTask.Note}}</span>
+        </div>
+
+        <div style="float: right">
+            <button class="button" (click)="this.addEditTask(aTask)">(~) Edit</button>
+            <button class="button" (click)="this.deleteTask(aTask.Id)">(-) Delete</button>
+        </div>
+
+    </div>
+
+</div>
+
+<div *ngIf="this.allTasks.length == 0">
+
+    <p *ngIf="this.isLoaded" class="informative">
+        <span class="heading">
+            No Task in this List '{{this.listModel.ListName}}'
+        </span>
+    </p>
+</div>
